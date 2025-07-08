@@ -1,4 +1,5 @@
 import React from 'react'
+import AllProducts from '../../components/products/AllProducts'
 
 const Home: React.FC = () => {
     return (
@@ -12,8 +13,8 @@ const Home: React.FC = () => {
                     Shop our curated collection of premium products designed to enhance your lifestyle
                 </p>
             </div>
-
-
+            {/* All Products */}
+            <AllProducts />
         </div>
     )
 }
