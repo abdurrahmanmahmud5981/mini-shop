@@ -8,3 +8,8 @@ export interface Product {
     rating: number;
     reviews: number;
 }
+
+export interface CartItems {
+    product: Product;
+    quantity: number;
+}
