@@ -12,8 +12,12 @@ const Navber: React.FC = () => {
                             <Store className="w-8 h-8 text-gray-600" />
                             <h1 className="text-2xl font-bold text-gray-900">Mini Shop</h1>
                         </NavLink>
-                        <div className="hidden md:block">
-                            <div className="ml-10 flex items-baseline space-x-4">
+
+                    </div>
+
+                    <div className="flex items-center gap-3.5">
+                        <div className="hidden md:block ">
+                            <div className=" flex items-baseline space-x-4">
                                 <NavLink
                                     to={ROUTES.HOME}
                                     className={({ isActive }) =>
@@ -26,9 +30,6 @@ const Navber: React.FC = () => {
                                 </NavLink>
                             </div>
                         </div>
-                    </div>
-
-                    <div className="flex items-center">
                         <button
                             className="relative p-2 text-gray-700 hover:text-gray-900 hover:bg-gray-100 rounded-full transition-colors duration-200"
                         >
