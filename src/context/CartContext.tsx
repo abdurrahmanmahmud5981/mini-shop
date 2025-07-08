@@ -1,11 +1,36 @@
-import React from 'react'
+import React, { createContext, type ReactNode } from "react";
+import type { CartItems, Product } from "../types";
+import { useCart } from "../hooks/useCart";
 
-const CartContext = () => {
-  return (
-    <div>
-      
-    </div>
-  )
+
+interface CartContextType {
+    cartItems: CartItems[];
+    isCartOpen: boolean;
+    addToCart: (product: Product) => void;
+    removeFromCart: (productId: number) => void;
+    updateQuantity: (productId: number, quantity: number) => void;
+    clearCart: () => void;
+    toggleCart: () => void;
+    closeCart: () => void;
+    totalItems: number;
+    totalPrice: number;
 }
 
-export default CartContext
+
+const CartContext = createContext<CartContextType | undefined>(undefined);
+
+
+interface CartProviderProps {
+    children: ReactNode;
+}
+
+export const CartProvider: React.FC<CartProviderProps> = ({ children }: { children: ReactNode }) => {
+
+    const cartState = useCart();
+
+    return (
+        <CartContext.Provider value={cartState}>
+            {children}
+        </CartContext.Provider>
+    )
+}
