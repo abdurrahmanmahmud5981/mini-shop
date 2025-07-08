@@ -4,7 +4,7 @@ import { Outlet } from 'react-router'
 
 const MainLayout: React.FC = () => {
     return (
-        <div>
+        <div className='min-h-screen bg-gray-50'>
             <Navber />
             <main>
                 <Outlet />
