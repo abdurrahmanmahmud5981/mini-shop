@@ -2,6 +2,7 @@ import React from 'react'
 import type { Product } from '../../types';
 import { ShoppingCart, Star } from 'lucide-react';
 import { Link } from 'react-router';
+import { createProductRoute } from '../../constants/routes';
 
 
 interface ProductCardProps {
@@ -11,7 +12,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
     return (
         <>
             <Link
-                to={`/`}
+                to={createProductRoute(product.id)}
                 className="bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden group block"
             >
                 <div className="relative overflow-hidden">

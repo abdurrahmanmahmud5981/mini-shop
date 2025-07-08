@@ -4,3 +4,5 @@ export const ROUTES = {
   CART: '/cart',
   CHECKOUT: '/checkout'
 } as const;
+
+export const createProductRoute = (id: number) => `/product/${id}`;

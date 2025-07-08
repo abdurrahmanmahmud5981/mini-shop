@@ -66,8 +66,8 @@ const ProductDetails: React.FC = () => {
                                     <Star
                                         key={i}
                                         className={`w-5 h-5 ${i < Math.floor(product.rating)
-                                                ? 'fill-yellow-400 text-yellow-400'
-                                                : 'text-gray-300'
+                                            ? 'fill-yellow-400 text-yellow-400'
+                                            : 'text-gray-300'
                                             }`}
                                     />
                                 ))}
