@@ -2,7 +2,16 @@ import { Home, ShoppingCart, Store } from 'lucide-react';
 import React from 'react'
 import { ROUTES } from '../../constants/routes.ts'
 import { NavLink } from 'react-router';
-const Navber: React.FC = () => {
+
+
+interface NavbarProps {
+    cartItemCount: number;
+    onToggleCart: () => void;
+}
+const Navber: React.FC<NavbarProps> = ({
+    cartItemCount,
+    onToggleCart
+}) => {
     return (
         <nav className="bg-white shadow-lg sticky top-0 z-40">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -31,9 +40,15 @@ const Navber: React.FC = () => {
                             </div>
                         </div>
                         <button
+                            onClick={onToggleCart}
                             className="relative p-2 text-gray-700 hover:text-gray-900 hover:bg-gray-100 rounded-full transition-colors duration-200"
                         >
                             <ShoppingCart size={24} />
+                            {cartItemCount > 0 && (
+                                <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full h-6 w-6 flex items-center justify-center font-medium">
+                                    {cartItemCount}
+                                </span>
+                            )}
                         </button>
                     </div>
                 </div>
