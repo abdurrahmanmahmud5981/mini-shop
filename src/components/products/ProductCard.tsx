@@ -3,12 +3,30 @@ import type { Product } from '../../types';
 import { ShoppingCart, Star } from 'lucide-react';
 import { Link } from 'react-router';
 import { createProductRoute } from '../../constants/routes';
+import { useCartContext } from '../../context/useCartContext';
 
 
 interface ProductCardProps {
     product: Product;
 }
 const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
+    const { addToCart } = useCartContext();
+
+    const handleAddToCart = (e: React.MouseEvent) => {
+        e.preventDefault();
+        e.stopPropagation();
+        addToCart(product);
+
+        // Visual feedback
+        const button = e.currentTarget as HTMLButtonElement;
+        const originalText = button.textContent;
+        button.textContent = 'Added!';
+        button.classList.add('bg-green-600');
+        setTimeout(() => {
+            button.textContent = originalText;
+            button.classList.remove('bg-green-600');
+        }, 1000);
+    };
     return (
         <>
             <Link
@@ -47,6 +65,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
                             ${product.price.toFixed(2)}
                         </span>
                         <button
+                            onClick={handleAddToCart}
                             className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg flex items-center space-x-2 transition-colors duration-200 font-medium"
                         >
                             <ShoppingCart size={16} />

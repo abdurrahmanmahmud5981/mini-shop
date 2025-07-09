@@ -2,11 +2,17 @@ import React from 'react'
 import { useNavigate, useParams } from 'react-router'
 import { products } from '../data/products';
 import { ArrowLeft, Heart, ShoppingCart, Star } from 'lucide-react';
+import { useCartContext } from '../context/useCartContext';
 
 const ProductDetails: React.FC = () => {
     const navigate = useNavigate()
     const { id } = useParams<{ id: string }>();
+    const { addToCart } = useCartContext();
+
+
+
     const product = products.find(p => p.id === Number(id));
+
 
     if (!product) {
         return (
@@ -25,6 +31,10 @@ const ProductDetails: React.FC = () => {
         );
     }
 
+    const handleAddToCart = () => {
+        addToCart(product);
+        // You could add a toast notification here
+    };
 
     return (
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
@@ -97,7 +107,8 @@ const ProductDetails: React.FC = () => {
 
                         <div className="flex space-x-4">
                             <button
-                                className="flex-1 bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-xl flex items-center justify-center space-x-3 transition-colors duration-200 font-semibold text-lg cursor-pointer"
+                                onClick={handleAddToCart}
+                                className=" flex-1 bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-xl flex items-center justify-center space-x-3 transition-colors duration-200 font-semibold text-lg cursor-pointer"
                             >
                                 <ShoppingCart size={24} />
                                 <span>Add to Cart</span>
