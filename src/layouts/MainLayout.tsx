@@ -14,7 +14,7 @@ const MainLayout: React.FC = () => {
         totalPrice,
         toggleCart
     } = useCartContext();
-    console.log(totalPrice)
+  
     return (
         <div className='min-h-screen bg-gray-50'>
             <Navber

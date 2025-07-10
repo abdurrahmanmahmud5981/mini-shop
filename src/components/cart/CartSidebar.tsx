@@ -20,6 +20,7 @@ const CartSidebar: React.FC<CartSidebarProps> = ({
     onUpdateQuantity,
     onRemoveItem,
     totalPrice
+
 }) => {
     const navigate = useNavigate();
 
@@ -27,7 +28,7 @@ const CartSidebar: React.FC<CartSidebarProps> = ({
         onClose();
         navigate(ROUTES.CHECKOUT);
     };
-    console.log(totalPrice)
+    console.log(cartItems)
 
     return (
         <>
@@ -84,8 +85,10 @@ const CartSidebar: React.FC<CartSidebarProps> = ({
                                         </div>
                                         <div className="flex items-center space-x-2">
                                             <button
+                                                disabled={item.quantity <= 1}
                                                 onClick={() => onUpdateQuantity(item.product.id, item.quantity - 1)}
-                                                className="p-1 hover:bg-gray-200 rounded-full transition-colors duration-200"
+                                                className={`p-1 hover:bg-gray-200 rounded-full transition-colors duration-200 ${item.quantity <= 1 ? "cursor-not-allowed" : " cursor-pointer"
+                                                    }`}
                                             >
                                                 <Minus size={16} />
                                             </button>
