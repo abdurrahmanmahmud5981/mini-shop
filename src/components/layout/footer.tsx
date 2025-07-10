@@ -27,10 +27,10 @@ export const Footer: React.FC = () => {
                         </div>
                         <div className="flex items-center space-x-6">
                             <div className="flex items-center space-x-2">
-                                <CreditCard className="w-5 h-5 text-gray-400" />
-                                <span className="text-gray-400 text-sm">Secure payments</span>
+                                <CreditCard className="w-5 h-5 text-gray-300" />
+                                <span className="text-gray-300 text-sm">Secure payments</span>
                             </div>
-                            <div className="flex space-x-4 text-sm text-gray-400">
+                            <div className="flex space-x-4 text-sm text-gray-300">
                                 <a href="#" className="hover:text-white transition-colors duration-200">
                                     Privacy Policy
                                 </a>
@@ -39,7 +39,7 @@ export const Footer: React.FC = () => {
                                 </a>
                             </div>
                         </div>
-                        <div className="text-gray-400 text-sm">
+                        <div className="text-gray-300 text-sm">
                             © {currentYear} ShopHub. All rights reserved. Made with{' '}
                             <Heart className="w-4 h-4 inline text-red-500" /> By Abdur Rahman Mahmud.
                         </div>

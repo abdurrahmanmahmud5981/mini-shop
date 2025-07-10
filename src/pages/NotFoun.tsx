@@ -5,7 +5,7 @@ import { ROUTES } from '../constants/routes';
 
 export const NotFoundPage: React.FC = () => {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50">
+    <div className=" flex items-center justify-center bg-gray-50">
       <div className="text-center p-8">
         <div className="mb-8">
           <Search className="w-24 h-24 text-gray-300 mx-auto mb-4" />
