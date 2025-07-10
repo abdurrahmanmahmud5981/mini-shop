@@ -1,10 +1,11 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useNavigate, useParams } from 'react-router'
 import { products } from '../data/products';
 import { ArrowLeft, Heart, ShoppingCart, Star } from 'lucide-react';
 import { useCartContext } from '../context/useCartContext';
 
 const ProductDetails: React.FC = () => {
+    const [isLoading, setIsLoading] = useState(false)
     const navigate = useNavigate()
     const { id } = useParams<{ id: string }>();
     const { addToCart } = useCartContext();
@@ -13,9 +14,8 @@ const ProductDetails: React.FC = () => {
 
 
     const product = products.find(p => p.id === Number(id));
-    
-    const exists = cartItems.some(item => item.product.id === product?.id);
 
+    const exists = cartItems.some(item => item.product.id === product?.id);
 
 
     if (!product) {
@@ -35,7 +35,13 @@ const ProductDetails: React.FC = () => {
         );
     }
 
-    const handleAddToCart = () => {
+    const handleAddToCart = async () => {
+        setIsLoading(true)
+
+
+        // Simulate API call
+        await new Promise(resolve => setTimeout(resolve, 1000));
+        setIsLoading(false)
         addToCart(product);
     };
 
@@ -43,7 +49,7 @@ const ProductDetails: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
             <button
                 onClick={() => navigate(-1)}
-                className="flex items-center space-x-2 text-gray-600 hover:text-gray-900 mb-8 transition-colors duration-200"
+                className="flex items-center space-x-2 text-gray-600 hover:text-gray-900 mb-8 transition-colors duration-200 cursor-pointer"
             >
                 <ArrowLeft size={20} />
                 <span>Back</span>
@@ -63,7 +69,7 @@ const ProductDetails: React.FC = () => {
                 <div className="space-y-6">
                     <div>
                         <div className="flex items-center justify-between mb-2">
-                            <span className="text-sm text-blue-600 font-semibold uppercase tracking-wide">
+                            <span className="text-sm text-emerald-600 font-semibold uppercase tracking-wide">
                                 {product.category}
                             </span>
                             <button className="p-2 text-gray-400 hover:text-red-500 transition-colors duration-200">
@@ -114,11 +120,21 @@ const ProductDetails: React.FC = () => {
                                 onClick={handleAddToCart}
                                 className={`flex-1 px-8 py-4 rounded-xl flex items-center justify-center space-x-3 font-semibold text-lg transition-colors duration-200 ${exists
                                     ? 'bg-gray-400 text-white cursor-not-allowed'
-                                    : 'bg-blue-600 hover:bg-blue-700 text-white cursor-pointer'
+                                    : 'bg-emerald-600 hover:bg-emerald-700 text-white cursor-pointer'
                                     }`}
                             >
-                                <ShoppingCart size={24} />
-                                <span>{exists ? 'Already in Cart' : 'Add to Cart'}</span>
+                                {isLoading ? (
+                                    <>
+                                        <div className="animate-spin rounded-full h-5 w-5 border-2 border-white border-t-transparent" />
+                                        <span>Adding...</span>
+                                    </>
+                                ) : (
+                                    <>
+                                        <ShoppingCart size={24} />
+                                        <span>{exists ? 'Already in Cart' : 'Add to Cart'}</span>
+                                    </>
+                                )}
+
                             </button>
 
                         </div>

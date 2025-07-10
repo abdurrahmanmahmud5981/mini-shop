@@ -28,7 +28,6 @@ const CartSidebar: React.FC<CartSidebarProps> = ({
         onClose();
         navigate(ROUTES.CHECKOUT);
     };
-    console.log(cartItems)
 
     return (
         <>
@@ -121,7 +120,7 @@ const CartSidebar: React.FC<CartSidebarProps> = ({
                             </div>
                             <button
                                 onClick={handleCheckout}
-                                className="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-lg font-semibold transition-colors duration-200"
+                                className="w-full bg-emerald-600 hover:bg-emerald-700 text-white py-3 rounded-lg font-semibold transition-colors duration-200"
                             >
                                 Checkout
                             </button>

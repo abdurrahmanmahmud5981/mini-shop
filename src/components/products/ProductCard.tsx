@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import type { Product } from '../../types';
 import { ShoppingCart, Star } from 'lucide-react';
 import { Link } from 'react-router';
@@ -10,23 +10,23 @@ interface ProductCardProps {
     product: Product;
 }
 const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
-    const { addToCart } = useCartContext();
+    const [isLoading, setIsLoading] = useState(false)
+    const { addToCart, cartItems } = useCartContext();
 
-    const handleAddToCart = (e: React.MouseEvent) => {
-        e.preventDefault();
-        e.stopPropagation();
+    const isExist = cartItems.some(item => item.product.id === product?.id)
+
+
+
+    const handleAddToCart = async () => {
+        setIsLoading(true)
+        
+
+        // Simulate API call
+        await new Promise(resolve => setTimeout(resolve, 1000));
+        setIsLoading(false)
         addToCart(product);
-
-        // Visual feedback
-        const button = e.currentTarget as HTMLButtonElement;
-        const originalText = button.textContent;
-        button.textContent = 'Added!';
-        button.classList.add('bg-green-600');
-        setTimeout(() => {
-            button.textContent = originalText;
-            button.classList.remove('bg-green-600');
-        }, 1000);
     };
+
     return (
         <>
             <Link
@@ -52,7 +52,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
                         </div>
                     </div>
 
-                    <h3 className="text-lg font-semibold text-gray-900 mb-2 line-clamp-2 hover:text-blue-600 transition-colors duration-200">
+                    <h3 className="text-lg font-semibold text-gray-900 mb-2 line-clamp-2 hover:text-emerald-600 transition-colors duration-200">
                         {product.name}
                     </h3>
 
@@ -66,11 +66,26 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
                         </span>
                         <button
                             onClick={handleAddToCart}
-                            className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg flex items-center space-x-2 transition-colors duration-200 font-medium"
+                            disabled={isExist} // <-- also disable the button
+                            className={`px-4 py-2 rounded-lg flex items-center space-x-2 transition-colors duration-200 font-medium ${isExist
+                                ? 'bg-gray-400 text-white cursor-not-allowed'
+                                : 'bg-emerald-600 hover:bg-emerald-700 text-white cursor-pointer'
+                                }`}
                         >
-                            <ShoppingCart size={16} />
-                            <span>Add to Cart</span>
+                            {isLoading ? (
+                                <>
+                                    <div className="animate-spin rounded-full h-5 w-5 border-2 border-white border-t-transparent" />
+                                    <span>Adding...</span>
+                                </>
+                            ) : (
+                                <>
+                                    <ShoppingCart size={16} />
+                                    <span>{isExist ? 'Already in Cart' : 'Add to Cart'}</span>
+                                </>
+                            )}
+
                         </button>
+
                     </div>
                 </div>
             </Link>

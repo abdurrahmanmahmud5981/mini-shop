@@ -19,8 +19,8 @@ const Navber: React.FC<NavbarProps> = ({
                 <div className="flex justify-between items-center h-16">
                     <div className="flex items-center space-x-8">
                         <NavLink to={ROUTES.HOME} className="flex-shrink-0 flex items-center space-x-2">
-                            <Store className="w-8 h-8 text-gray-600" />
-                            <h1 className="text-2xl font-bold text-gray-900">Mini Shop</h1>
+                            <Store className="w-8 h-8 text-emerald-600" />
+                            <h1 className="text-2xl font-bold text-emerald-900">Mini Shop</h1>
                         </NavLink>
 
                     </div>
@@ -31,7 +31,7 @@ const Navber: React.FC<NavbarProps> = ({
                                 <NavLink
                                     to={ROUTES.HOME}
                                     className={({ isActive }) =>
-                                        isActive ? "px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200 flex items-center space-x-2 bg-gray-900 text-white" : "text-gray-700 hover:bg-gray-100 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200 flex items-center space-x-2"
+                                        isActive ? "px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200 flex items-center space-x-2 bg-emerald-600 text-white" : "text-gray-700 hover:bg-gray-100 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200 flex items-center space-x-2"
                                     }
 
                                 >
@@ -42,7 +42,7 @@ const Navber: React.FC<NavbarProps> = ({
                         </div>
                         <button
                             onClick={onToggleCart}
-                            className="relative p-2 text-gray-700 hover:text-gray-900 hover:bg-gray-100 rounded-full transition-colors duration-200"
+                            className="relative p-2 text-emerald-700 hover:text-gray-900 hover:bg-emerald-100 rounded-full transition-colors duration-200"
                         >
                             <ShoppingCart size={24} />
                             {cartItemCount.length > 0 && (

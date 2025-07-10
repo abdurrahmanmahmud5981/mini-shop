@@ -13,3 +13,9 @@ export interface CartItems {
     product: Product;
     quantity: number;
 }
+
+export interface CheckoutForm {
+  name: string;
+  email: string;
+  address: string;
+}
