@@ -15,17 +15,17 @@ const MainLayout: React.FC = () => {
         totalPrice,
         toggleCart
     } = useCartContext();
-  
+
     return (
         <div className='min-h-screen bg-gray-50'>
             <Navber
                 cartItemCount={cartItems}
                 onToggleCart={toggleCart}
             />
-            <main>
+            <main className='min-h-[calc(100vh-220px)]'>
                 <Outlet />
             </main>
-            <Footer/>
+            <Footer />
             <CartSidebar
                 isOpen={isCartOpen}
                 onClose={closeCart}

@@ -5,14 +5,16 @@ import Home from '../pages/Home/Home'
 import { ROUTES } from '../constants/routes'
 import ProductDetails from '../pages/ProductDetails'
 import Checkout from '../pages/Checkout'
+import { NotFoundPage } from '../pages/NotFoun'
 const AppRouter: React.FC = () => {
     return (
         <BrowserRouter>
             <Routes>
                 <Route path='/' element={<MainLayout />}>
                     <Route index element={<Home />} />
-                    <Route path={ROUTES.PRODUCT} element={<ProductDetails/>}/>
-                    <Route path={ROUTES.CHECKOUT} element={<Checkout/>}/>
+                    <Route path={ROUTES.PRODUCT} element={<ProductDetails />} />
+                    <Route path={ROUTES.CHECKOUT} element={<Checkout />} />
+                    <Route path="*" element={<NotFoundPage />} />
                 </Route>
             </Routes>
         </BrowserRouter>
