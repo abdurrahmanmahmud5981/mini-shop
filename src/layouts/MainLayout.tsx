@@ -3,6 +3,7 @@ import Navber from '../components/navigation/Navber'
 import { Outlet } from 'react-router'
 import { useCartContext } from '../context/useCartContext';
 import CartSidebar from '../components/cart/CartSidebar';
+import { Footer } from '../components/layout/footer';
 
 const MainLayout: React.FC = () => {
     const {
@@ -24,6 +25,7 @@ const MainLayout: React.FC = () => {
             <main>
                 <Outlet />
             </main>
+            <Footer/>
             <CartSidebar
                 isOpen={isCartOpen}
                 onClose={closeCart}
