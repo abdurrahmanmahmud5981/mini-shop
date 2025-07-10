@@ -178,7 +178,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## 👨‍💻 **Developer**
 
 **Abdur Rahman Mahmud**
-- GitHub: [@yourusername](https://github.com/abdurrahmanmahmud5981)
+- GitHub: [@abdurrahmanmahmud5981](https://github.com/abdurrahmanmahmud5981)
 - Email: abdurrahmanmahmud58.com
 
 ---
