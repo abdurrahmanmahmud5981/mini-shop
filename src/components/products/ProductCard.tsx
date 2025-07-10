@@ -80,7 +80,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
                             ) : (
                                 <>
                                     <ShoppingCart size={16} />
-                                    <span>{isExist ? 'Already in Cart' : 'Add to Cart'}</span>
+                                    <span>{isExist ? 'Added' : 'Add to Cart'}</span>
                                 </>
                             )}
 
