@@ -9,9 +9,13 @@ const ProductDetails: React.FC = () => {
     const { id } = useParams<{ id: string }>();
     const { addToCart } = useCartContext();
 
+    const { cartItems } = useCartContext()
 
 
     const product = products.find(p => p.id === Number(id));
+    
+    const exists = cartItems.some(item => item.product.id === product?.id);
+
 
 
     if (!product) {
@@ -33,7 +37,6 @@ const ProductDetails: React.FC = () => {
 
     const handleAddToCart = () => {
         addToCart(product);
-        // You could add a toast notification here
     };
 
     return (
@@ -107,12 +110,17 @@ const ProductDetails: React.FC = () => {
 
                         <div className="flex space-x-4">
                             <button
+                                disabled={exists}
                                 onClick={handleAddToCart}
-                                className=" flex-1 bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-xl flex items-center justify-center space-x-3 transition-colors duration-200 font-semibold text-lg cursor-pointer"
+                                className={`flex-1 px-8 py-4 rounded-xl flex items-center justify-center space-x-3 font-semibold text-lg transition-colors duration-200 ${exists
+                                    ? 'bg-gray-400 text-white cursor-not-allowed'
+                                    : 'bg-blue-600 hover:bg-blue-700 text-white cursor-pointer'
+                                    }`}
                             >
                                 <ShoppingCart size={24} />
-                                <span>Add to Cart</span>
+                                <span>{exists ? 'Already in Cart' : 'Add to Cart'}</span>
                             </button>
+
                         </div>
 
                         <div className="grid grid-cols-2 gap-4 pt-6">

@@ -11,14 +11,14 @@ const MainLayout: React.FC = () => {
         removeFromCart,
         updateQuantity,
         closeCart,
-        totalItems,
         totalPrice,
         toggleCart
     } = useCartContext();
+    console.log(totalPrice)
     return (
         <div className='min-h-screen bg-gray-50'>
             <Navber
-                cartItemCount={totalItems}
+                cartItemCount={cartItems}
                 onToggleCart={toggleCart}
             />
             <main>

@@ -27,6 +27,7 @@ const CartSidebar: React.FC<CartSidebarProps> = ({
         onClose();
         navigate(ROUTES.CHECKOUT);
     };
+    console.log(totalPrice)
 
     return (
         <>
