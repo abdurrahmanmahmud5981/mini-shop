@@ -40,7 +40,7 @@ export const Footer: React.FC = () => {
                             </div>
                         </div>
                         <div className="text-gray-300 text-sm">
-                            © {currentYear} ShopHub. All rights reserved. Made with{' '}
+                            © {currentYear} Mini Shop. All rights reserved. Made with{' '}
                             <Heart className="w-4 h-4 inline text-red-500" /> By Abdur Rahman Mahmud.
                         </div>
                     </div>
